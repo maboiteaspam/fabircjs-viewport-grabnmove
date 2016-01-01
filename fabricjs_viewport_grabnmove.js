@@ -1,4 +1,4 @@
-window.fabric && (function(fabric){
+window.Workspace = window.fabric && (function(fabric){
 // see below
   var fastCanvas = fabric.fastCanvas(fabric.CanvasWithViewport);
   function Workspace(el){
@@ -26,7 +26,7 @@ window.fabric && (function(fabric){
           if(spacePressed){
             that.scene.selection =!spacePressed;
             that.scene.isGrabMode = spacePressed;
-            that.scene.setCursor('grabbing');
+            that.scene._setCursor('grabbing');
             that.scene.__onMouseUp(lastEv);
             that.scene._onMouseDownInGrabMode(lastEv);
             that.scene.renderTop();
@@ -37,7 +37,7 @@ window.fabric && (function(fabric){
       .on('keyup.spaceGrab', _.throttle(function(){
         if(spacePressed){
           spacePressed = false;
-          that.scene.setCursor('auto');
+          that.scene._setCursor('auto');
           that.scene.isGrabMode = spacePressed;
           that.scene.selection = !spacePressed;
           that.scene.__onMouseUp(lastEv);
@@ -53,6 +53,7 @@ window.fabric && (function(fabric){
       .off('keydown.spaceGrab')
       .off('keyup.spaceGrab');
   };
+    console.log('rrrr')
 
   return Workspace;
 })(window.fabric);

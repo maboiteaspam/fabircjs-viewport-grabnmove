@@ -5,7 +5,6 @@ window.fabric && (function(fabric){
     return (function(_super) {
       __extends(fastCanvas, _super);
       function fastCanvas() {
-        this.frame;
         fastCanvas.__super__.constructor.apply(this, arguments);
       }
       fastCanvas.prototype.renderAll = function() {

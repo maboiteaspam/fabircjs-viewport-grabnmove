@@ -22,6 +22,16 @@ c.setZoom(c.viewport.zoom*1.1); // zoom in by 10%
 
 ```
 
+# Dev
+
+kick start your dev like this
+
+```bash
+npm install http-server -g
+http-server . -p 8080 -o
+```
+
+
 # notes
 
 Let s see.
