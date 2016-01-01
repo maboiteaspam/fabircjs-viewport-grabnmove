@@ -33,6 +33,7 @@ canvas.add(triangle);
 kick start your dev like this
 
 ```bash
+git clone ...
 npm install http-server -g
 http-server . -p 8080 -o
 ```
