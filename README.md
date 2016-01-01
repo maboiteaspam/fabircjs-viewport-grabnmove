@@ -21,3 +21,7 @@ c.setZoom(c.viewport.zoom*1.1); // zoom in by 10%
 </script>
 
 ```
+
+# notes
+
+Let s see.
