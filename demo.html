@@ -1,11 +1,10 @@
 <html>
-<head>
-    <title>Demo fabric canvas grab n move style</title>
-</head>
+<head>Demo fabric canvas grab n move style</head>
 <body>
 
-<canvas id="id-of-your-canvas" width="500" height="500"></canvas>
+<canvas id="id-of-your-canvas" width="500" height="500" style="border: black 1px solid;"></canvas>
 
+<script src="http://underscorejs.org/underscore-min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>
 <script src="https://raw.githubusercontent.com/rstgroup/fabricjs-viewport/master/dist/fabricjs_viewport.js"></script>
@@ -13,10 +12,36 @@
 <script src="https://raw.githubusercontent.com/maboiteaspam/fabircjs-viewport-grabnmove/master/fabricjs_viewport_grabnmove.js"></script>
 <script>
 
-    var c = new fabric.CanvasWithViewport("id-of-your-canvas");
+    if (window.Workspace) {
+        var c = new Workspace("id-of-your-canvas")
+        c.enableGrabbing();
 
-    c.enableGrabbing();
-    c.setZoom(c.viewport.zoom*1.1); // zoom in by 10%
+        var canvas = c.scene;
+
+        var zoom=0;
+        var zoomUpdate = function (k){
+            zoom+=k;
+            canvas.setZoom(zoom);
+            console.log('zoom %s', zoom)
+        }
+        var el = canvas.upperCanvasEl;
+        var mousewheel = function (e) {
+            var e = window.event || e; // old IE support
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            zoomUpdate(delta/10)
+        }
+        if (el.addEventListener) {
+            el.addEventListener("mousewheel", mousewheel, false);
+            el.addEventListener("DOMMouseScroll", mousewheel, false)
+        }
+        else el.attachEvent("onmousewheel", mousewheel);
+
+
+        var triangle = new fabric.Triangle({
+            width: 100, height: 100, left: 50, top: 300, fill: '#cca'
+        });
+        canvas.add(triangle);
+    }
 
 </script>
 </body>
