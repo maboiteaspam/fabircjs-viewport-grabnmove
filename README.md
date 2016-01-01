@@ -13,10 +13,16 @@ Note , it requires `fabric.fastCanvas`, see example below.
 <script src="fabricjs_viewport_grabnmove.js"></script>
 <script>
 
-var c = new fabric.CanvasWithViewport("id-of-your-canvas");
+var workspace = new Workspace("id-of-your-canvas")
+workspace.enableGrabbing();
 
-c.enableGrabbing();
-c.setZoom(c.viewport.zoom*1.1); // zoom in by 10%
+var canvas = workspace.scene;
+canvas.setZoom(canvas.viewport.zoom*1.1); // zoom in by 10%
+
+var triangle = new fabric.Triangle({
+    width: 100, height: 100, left: 50, top: 300, fill: '#cca'
+});
+canvas.add(triangle);
 
 </script>
 

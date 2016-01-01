@@ -13,10 +13,10 @@
 <script>
 
     if (window.Workspace) {
-        var c = new Workspace("id-of-your-canvas")
-        c.enableGrabbing();
+        var workspace = new Workspace("id-of-your-canvas")
+        workspace.enableGrabbing();
 
-        var canvas = c.scene;
+        var canvas = workspace.scene;
 
         var zoom=0;
         var zoomUpdate = function (k){
